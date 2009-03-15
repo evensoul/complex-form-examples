@@ -1,6 +1,6 @@
 class Task < ActiveRecord::Base
   belongs_to :project
-  has_many  :colors
+  has_many  :colors, :dependent => :destroy
   validates_presence_of :name
   
   accepts_nested_attributes_for :colors, :allow_destroy => true, :reject_if => proc { |a| a['name'].blank? }

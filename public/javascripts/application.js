@@ -1,7 +1,14 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
+
+// (10).rnd() => returns random number from 1 to 10
+Number.prototype.rnd = function(){
+	return Math.floor(Math.random()*this+1)
+}
+
 replace_ids = function(s){
-  var new_id = new Date().getTime();
+  // More random id - prior version was sometimes generating same timestamp when clicking real fast / or holding enter key
+  var new_id = Math.round(new Date().getTime() / (50).rnd() / Math.random());
   return s.replace(/NEW_RECORD/g, new_id);
 }
 
