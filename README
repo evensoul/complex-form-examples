@@ -7,5 +7,24 @@ Example of nested forms with 2 level nesting.
 - Events work with delegate because it's easier when adding dynamic html parts.
 - Most of the javascript is extracted to application.js
 
+Javascript logic
+----------------
+
+LEVEL 1
+-------
+
+<a class="add_nested_item" rel="tasks" href="#task">Add a task</a>
+
+class - Event attachment
+rel   - id of element in which we append new sub elements
+href  - variable name of the template which are generated in <head> 
+
+
+LEVEL 2
+-------
+<a rel="[task][colors]" class="add_nested_item_lvl2" href="#color">Add a color</a>
+
+rel   - css class names parent element, group element in which we append new sub elements
+
 Rails is vendored using a Git submodule to official repository:
 git://github.com/rails/rails.git
