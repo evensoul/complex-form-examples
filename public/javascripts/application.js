@@ -6,7 +6,7 @@ Number.prototype.rnd = function(){
 }
 
 replace_ids = function(s){
-  // More random id - prior version was sometimes generating same timestamp when clicking real fast / or holding enter key
+  // Random id with timestamp and counter for positions preserving
   window['new_id_counter'] = window['new_id_counter'] || 0
   var new_id = new Date().getTime() + (new_id_counter++);
   return s.replace(/NEW_RECORD/g, new_id);
