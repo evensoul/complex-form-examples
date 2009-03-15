@@ -1,0 +1,29 @@
+click "link=Edit"
+wait_for_page_to_load "30000"
+
+type "project_name", "Nested attributes"
+type "project_author_attributes_name", "Eloy Duran"
+type "project_tasks_attributes_0_name", "Create nested attributes"
+
+
+# Delete Blue color
+click "//div[@id='tasks']/div[1]/div/div[2]/p/a"
+
+click "link=Add a color"
+type "//div[@id='tasks']/div[1]/div/div[4]/p/input", "Brown"
+
+type "project_tasks_attributes_1_name", "Test nested attributes"
+click "//div[@id='tasks']/div[2]/a"
+type "//div[@id='tasks']/div[2]/div/div[3]/p/input", "Black"
+
+click "//div[@id='tasks']/div[3]/a"
+type "//div[@id='tasks']/div[3]/div/div[2]/p/input", "Cyan"
+
+click "project_submit"
+wait_for_page_to_load "30000"
+
+verify_text_present("Name: Nested attributes")
+verify_text_present("Author: Eloy Duran")
+verify_text_present("Create nested attributes: Red, Green, Brown")
+verify_text_present("Test nested attributes: Orange, Yellow, Black")
+verify_text_present("Share code on GitHub: Purple, Cyan")
