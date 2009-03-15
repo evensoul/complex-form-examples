@@ -1,0 +1,38 @@
+setup :fixtures => :all
+
+open "/projects"
+
+click "link=New Project"
+wait_for_page_to_load "30000"
+
+type "project_name", "Complex forms"
+type "project_author_attributes_name", "Ryan Bates"
+type "project_tasks_attributes_0_name", "Show example of complex form"
+type "project_tasks_attributes_0_colors_attributes_0_name", "Red"
+
+click "link=Add a color"
+type "//div[@id='tasks']/div/div/div[2]/p/input", "Blue"
+
+click "link=Add a color"
+type "//div[@id='tasks']/div/div/div[3]/p/input", "Green"
+
+click "link=Add a task"
+type "//div[@id='tasks']/div[2]/p/input[1]", "Make railscast"
+type "//div[@id='tasks']/div[2]/div/div/p/input", "Orange"
+
+click "//div[@id='tasks']/div[2]/a"
+type "//div[@id='tasks']/div[2]/div/div[2]/p/input", "Yellow"
+
+click "link=Add a task"
+type "//div[@id='tasks']/div[3]/p/input[1]", "Share code on GitHub"
+type "//div[@id='tasks']/div[3]/div/div/p/input", "Purple"
+
+click "project_submit"
+wait_for_page_to_load "30000"
+
+verify_text_present("Name: Complex forms")
+verify_text_present("Author: Ryan Bates")
+verify_text_present("Show example of complex form: Red, Blue, Green")
+verify_text_present("Make railscast: Orange, Yellow")
+verify_text_present("Share code on GitHub: Purple")
+

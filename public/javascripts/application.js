@@ -1,6 +1,5 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
-
 // (10).rnd() => returns random number from 1 to 10
 Number.prototype.rnd = function(){
 	return Math.floor(Math.random()*this+1)
