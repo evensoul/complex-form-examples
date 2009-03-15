@@ -1,0 +1,45 @@
+click "link=Edit"
+wait_for_page_to_load "30000"
+
+type "project_name", "Nested attributes double level"
+type "project_author_attributes_name", "Zoran and Marko Žabčić"
+type "project_tasks_attributes_0_name", "Create 2 level nesting"
+
+#remove all tasks
+click "link=remove"
+click "//div[@id='tasks']/div[2]/p/a"
+click "//div[@id='tasks']/div[3]/p/a"
+
+#add new task
+click "link=Add a task"
+type "//div[@id='tasks']/div[4]/p/input[1]", "2 level nesting"
+
+#add colors
+type "//div[@id='tasks']/div[4]/div/div/p/input", "Dark red"
+click "//div[@id='tasks']/div[4]/a"
+type "//div[@id='tasks']/div[4]/div/div[2]/p/input", "Dark blue"
+click "//div[@id='tasks']/div[4]/a"
+type "//div[@id='tasks']/div[4]/div/div[3]/p/input", "Dark purple"
+click "//div[@id='tasks']/div[4]/a"
+type "//div[@id='tasks']/div[4]/div/div[4]/p/input", "Deep Purple"
+click "//div[@id='tasks']/div[4]/a"
+type "//div[@id='tasks']/div[4]/div/div[5]/p/input", "Simply red"
+
+
+click "link=Add a task"
+type "//div[@id='tasks']/div[5]/p/input[1]", "Share on GitHub"
+type "//div[@id='tasks']/div[5]/div/div/p/input", "Light Blue"
+
+click "link=Add a task"
+type "//div[@id='tasks']/div[6]/p/input[1]", "Say thanks to Rails community :-)"
+type "//div[@id='tasks']/div[6]/div/div/p/input", "Light green"
+
+
+click "project_submit"
+wait_for_page_to_load "30000"
+
+verify_text_present("Name: Nested attributes double level")
+verify_text_present("Author: Zoran and Marko Žabčić ")
+verify_text_present("2 level nesting: Dark red, Dark blue, Dark purple, Deep Purple, Simply red")
+verify_text_present("Share on GitHub: Light Blue")
+verify_text_present("Say thanks to Rails community :-): Light green")
