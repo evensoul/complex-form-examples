@@ -30,11 +30,11 @@ var myrules = {
   '.add_nested_item_lvl2': function(e){
     el = Event.findElement(e);
     elements = el.rel.match(/(\w+)/g)
-    parent = '.'+elements[0]
-    child = '.'+elements[1]
+    eparent = '.'+elements[0]
+    echild = '.'+elements[1]
     
-    child_container = el.up(parent).down(child)    
-    parent_object_id = el.up(parent).down('input').name.match(/.*\[(\d+)\]/)[1]
+    child_container = el.up(eparent).down(echild)    
+    parent_object_id = el.up(eparent).down('input').name.match(/.*\[(\d+)\]/)[1]
     
     template = eval(el.href.replace(/.*#/, ''))
 
