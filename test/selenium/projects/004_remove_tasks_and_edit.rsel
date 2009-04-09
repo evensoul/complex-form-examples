@@ -1,0 +1,24 @@
+click "link=Edit"
+wait_for_page_to_load "30000"
+
+
+click "link=remove"
+click "//div[@id='tasks']/div[2]/p/a"
+click "//div[@id='tasks']/div[3]/p/a"
+click "//div[@id='tasks']/div[4]/p/a"
+click "project_submit"
+wait_for_page_to_load "30000"
+click "link=Edit"
+wait_for_page_to_load "30000"
+click "link=Add a color"
+type "//div[@id='tasks']/div/p/input[1]", "Selenium test remove all and add color"
+type "//div[@id='tasks']/div/div/div[1]/p/input", "Blue"
+type "//div[@id='tasks']/div/div/div[2]/p/input", "Red"
+type "project_author_attributes_name", "nodabs@github"
+click "link=Add a color"
+click "project_submit"
+wait_for_page_to_load "30000"
+
+verify_text_present("Selenium test remove all and add color: Blue, Red")
+verify_text_present("Author: nodabs@github")
+
